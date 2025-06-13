@@ -31,19 +31,19 @@ public class S3Service {
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
     
-    private final String DIR_NAME = "s3_data";
+    private final String DIR_NAME = "tmp";
     
     // 파일 업로드
 	@Transactional
 	public void uploadS3File(MultipartFile file) throws Exception {
 		
-		// D:/downloads/s3_data에 파일 저장 -> S3 전송 및 저장 (putObject)
+
 		if(file == null) {
 			throw new Exception("파일 전달 오류 발생");
 		}
 
 		//DB 저장
-		String savePath = "D:\\downloads\\" + DIR_NAME;
+		String savePath = "/" + DIR_NAME;
 		String attachmentOriginalFileName = file.getOriginalFilename();
 		UUID uuid = UUID.randomUUID();
 		String attachmentFileName = uuid.toString() + "_" + attachmentOriginalFileName;
