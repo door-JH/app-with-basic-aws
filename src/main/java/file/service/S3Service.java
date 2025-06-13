@@ -31,7 +31,7 @@ public class S3Service {
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
     
-    private final String DIR_NAME = "tmp";
+    private final String DIR_NAME = "s3_data";
     
     // 파일 업로드
 	@Transactional
@@ -43,7 +43,7 @@ public class S3Service {
 		}
 
 		//DB 저장
-		String savePath = "/" + DIR_NAME;
+		String savePath = "/home/ubuntu/" + DIR_NAME;
 		String attachmentOriginalFileName = file.getOriginalFilename();
 		UUID uuid = UUID.randomUUID();
 		String attachmentFileName = uuid.toString() + "_" + attachmentOriginalFileName;
